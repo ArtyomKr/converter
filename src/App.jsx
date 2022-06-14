@@ -1,7 +1,18 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
+import fetchRates from './services/thunks';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchRates())
+      .unwrap()
+      .then((rates) => console.log(rates));
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
