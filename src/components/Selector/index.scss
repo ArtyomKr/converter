@@ -1,0 +1,10 @@
+.selector {
+  position: absolute;
+  width: 300px;
+  max-height: 300px;
+  overflow: auto;
+
+  &__scrollable {
+    overflow: hidden;
+  }
+}

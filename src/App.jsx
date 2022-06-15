@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import './App.css';
+import './App.scss';
 import fetchRates from './services/thunks';
-import Converter from './components/converter';
+import Converter from './components/Сonverter';
 
 function App() {
   const dispatch = useDispatch();
@@ -16,9 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Converter />
-      </header>
+      <Converter />
     </div>
   );
 }
