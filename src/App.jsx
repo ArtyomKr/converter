@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import logo from './logo.svg';
 import './App.css';
 import fetchRates from './services/thunks';
+import Converter from './components/converter';
 
 function App() {
   const dispatch = useDispatch();
@@ -10,23 +10,14 @@ function App() {
   useEffect(() => {
     dispatch(fetchRates())
       .unwrap()
-      .then((rates) => console.log(rates));
-  }, []);
+      .then((rates) => console.log(rates))
+      .catch((err) => console.log(err.message));
+  }, [dispatch]);
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer">
-          Learn React
-        </a>
+        <Converter />
       </header>
     </div>
   );
