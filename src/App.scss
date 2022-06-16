@@ -1,7 +1,8 @@
 @use './utils/variables';
 
 .App {
-  height: 100vh;
+  min-height: 100vh;
+  padding: 50px;
   background: variables.$bg;
   display: flex;
   justify-content: center;
