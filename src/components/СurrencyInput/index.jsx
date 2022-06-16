@@ -1,33 +1,24 @@
 import propTypes from 'prop-types';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import './index.scss';
-import fetchRates from '../../services/thunks';
 
-function CurrencyInput({ name }) {
-  const dispatch = useDispatch();
-  const rate = useSelector((state) => state.ratesSlice.ratesData[name]);
+function CurrencyInput({ name, onChange, value }) {
   const [localValue, setLocalValue] = useState(0);
   const [isInFocus, setIsInFocus] = useState(false);
 
-  const updateRates = (base, amount) => {
-    dispatch(fetchRates({ base, amount })).catch((err) =>
-      console.log(err.message)
-    );
-  };
-
   const handleFocus = () => {
     setIsInFocus(true);
-    setLocalValue(rate);
+    setLocalValue(value);
   };
 
   const handleBlur = () => {
     setIsInFocus(false);
+    onChange(name, localValue);
   };
 
   const handleChange = (e) => {
     setLocalValue(e.target.value);
-    updateRates(name, e.target.value);
+    onChange(name, e.target.value);
   };
 
   return (
@@ -36,9 +27,9 @@ function CurrencyInput({ name }) {
         {name}
       </label>
       <input
-        type="tel"
-        inputMode="decimal"
-        value={isInFocus ? localValue : rate}
+        type="number"
+        min="0"
+        value={isInFocus ? localValue : value}
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
@@ -50,7 +41,9 @@ function CurrencyInput({ name }) {
 }
 
 CurrencyInput.propTypes = {
-  name: propTypes.string
+  name: propTypes.string.isRequired,
+  onChange: propTypes.func,
+  value: propTypes.number
 };
 
 export default CurrencyInput;

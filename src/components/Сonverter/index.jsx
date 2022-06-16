@@ -36,12 +36,22 @@ function Converter() {
     dispatch(removeCurrency(name));
   };
 
+  const onInputChange = (base, amount) => {
+    dispatch(fetchRates({ base, amount })).catch((err) =>
+      console.log(err.message)
+    );
+  };
+
   return ratesArr.length ? (
     <div className="converter">
       <div className="converter__inputs">
         {currencies.map((currency) => (
           <div key={currency} className="currency-field">
-            <CurrencyInput name={currency} />
+            <CurrencyInput
+              name={currency}
+              onChange={onInputChange}
+              value={ratesData[currency] ?? 0}
+            />
             <RemoveButton onClick={() => deleteCurrency(currency)} />
           </div>
         ))}
