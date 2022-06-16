@@ -1,0 +1,10 @@
+@use './utils/variables';
+
+.App {
+  min-height: 100vh;
+  padding: 200px;
+  background: variables.$bg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

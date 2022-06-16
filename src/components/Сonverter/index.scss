@@ -1,0 +1,16 @@
+@use '../../utils/variables';
+
+.converter {
+  padding: 20px;
+  background: variables.$bgSecondary;
+  border-radius: 5px;
+  box-shadow: 3px 3px 8px 0px variables.$secondary;
+
+  &__inputs {
+    .currency-field {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+  }
+}
