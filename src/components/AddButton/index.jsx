@@ -1,4 +1,5 @@
 import propTypes from 'prop-types';
+import './index.scss';
 
 function AddButton({ children, onClick }) {
   return (
