@@ -1,1 +1,2 @@
-export const API = 'https://converter-app-be.herokuapp.com';
+export const API =
+  process.env.REACT_APP_API ?? 'https://converter-app-be.herokuapp.com';
