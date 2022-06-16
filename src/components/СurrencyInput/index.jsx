@@ -1,6 +1,7 @@
 import propTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import './index.scss';
 import fetchRates from '../../services/thunks';
 
 function CurrencyInput({ name }) {
@@ -30,8 +31,10 @@ function CurrencyInput({ name }) {
   };
 
   return (
-    <label>
-      {name}
+    <div className="currency-input">
+      <label className="currency-input__label" htmlFor={name}>
+        {name}
+      </label>
       <input
         type="tel"
         inputMode="decimal"
@@ -39,8 +42,10 @@ function CurrencyInput({ name }) {
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        className="currency-input__input-field"
+        id={name}
       />
-    </label>
+    </div>
   );
 }
 
