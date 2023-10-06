@@ -6,7 +6,6 @@
   },
   "extends": [
     "plugin:react/recommended",
-    "airbnb",
     "prettier",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended"
@@ -29,10 +28,11 @@
     "*.svg"
   ],
   "rules": {
+    "no-param-reassign": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/react-in-jsx-scope": "off",
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "react/jsx-filename-extension": [
       "error",
       {
@@ -42,5 +42,11 @@
         ]
       }
     ]
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
   }
 }
